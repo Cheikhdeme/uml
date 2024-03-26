@@ -1,5 +1,6 @@
 package com.javatechie.config;
 
+import ch.qos.logback.core.encoder.Encoder;
 import com.javatechie.filter.JwtAuthFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -29,26 +30,26 @@ public class SecurityConfig {
     @Autowired
     private JwtAuthFilter authFilter;
 
-    @Bean
-    //authentication
-    public UserDetailsService userDetailsService() {
-//        UserDetails admin = User.withUsername("Basant")
-//                .password(encoder.encode("Pwd1"))
+  @Bean
+//    //authentication
+   public UserDetailsService userDetailsService() {
+//       UserDetails admin = User.withUsername("cdeme")
+//                .password(passwordEncoder().encode("passer"))
 //                .roles("ADMIN")
 //                .build();
-//        UserDetails user = User.withUsername("John")
-//                .password(encoder.encode("Pwd2"))
+//        UserDetails user = User.withUsername("astou")
+//                .password(passwordEncoder().encode("Passer"))
 //                .roles("USER","ADMIN","HR")
 //                .build();
 //        return new InMemoryUserDetailsManager(admin, user);
-        return new UserInfoUserDetailsService();
-    }
+    return new UserInfoUserDetailsService();
+  }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/products/new","/products/authenticate").permitAll()
+                .requestMatchers("/products/new","/products/login","/api/**").permitAll()
                 .and()
                 .authorizeHttpRequests().requestMatchers("/products/**")
                 .authenticated().and()
