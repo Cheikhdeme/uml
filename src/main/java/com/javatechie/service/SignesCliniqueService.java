@@ -48,6 +48,8 @@ public class SignesCliniqueService {
     public SignesCliniqueDTO updateSignesClinique(Long id, SignesCliniqueDTO signesCliniqueDTO) {
         SignesClinique signesClinique = SignesCliniqueDTO.convertToEntity(signesCliniqueDTO);
         signesClinique.setId(id);
+        Fiche fiche=ficheRepository.findFichesBySignesClinique(signesClinique);
+        signesClinique.setFiche(fiche);
         return SignesCliniqueDTO.convertToDTO(signesCliniqueRepository.save(signesClinique));
     }
 

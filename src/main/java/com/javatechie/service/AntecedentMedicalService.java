@@ -49,6 +49,7 @@ public class AntecedentMedicalService {
     public AntecedentMedicalDTO updateAntecedentMedical(Long id, AntecedentMedicalDTO antecedentMedicalDTO) {
         AntecedentMedical antecedentMedical = AntecedentMedicalDTO.convertToEntity(antecedentMedicalDTO);
         antecedentMedical.setId(id);
+        antecedentMedical.setAntecedentsPersonnel(antecedentsPersonnelRepository.findAntecedentsPersonnelByAntecedentMedical(antecedentMedical));
         return AntecedentMedicalDTO.convertToDTO(antecedentMedicalRepository.save(antecedentMedical));
     }
 

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -30,9 +31,9 @@ public class SecurityConfig {
     @Autowired
     private JwtAuthFilter authFilter;
 
-  @Bean
+    @Bean
 //    //authentication
-   public UserDetailsService userDetailsService() {
+    public UserDetailsService userDetailsService() {
 //       UserDetails admin = User.withUsername("cdeme")
 //                .password(passwordEncoder().encode("passer"))
 //                .roles("ADMIN")
@@ -42,16 +43,17 @@ public class SecurityConfig {
 //                .roles("USER","ADMIN","HR")
 //                .build();
 //        return new InMemoryUserDetailsManager(admin, user);
-    return new UserInfoUserDetailsService();
-  }
+        return new UserInfoUserDetailsService();
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
+                .cors(Customizer.withDefaults())
                 .authorizeHttpRequests()
-                .requestMatchers("/products/new","/products/login","/api/**").permitAll()
+                .requestMatchers("/api/login","/api/register").permitAll()
                 .and()
-                .authorizeHttpRequests().requestMatchers("/products/**")
+                .authorizeHttpRequests().requestMatchers("/api/**")
                 .authenticated().and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/evolution-apres-sortie")
+@RequestMapping("/api/evolutionApresSortie")
 public class EvolutionApresSortieController {
 
     @Autowired

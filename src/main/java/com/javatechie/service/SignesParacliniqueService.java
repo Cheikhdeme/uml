@@ -49,6 +49,8 @@ public class SignesParacliniqueService {
     public SignesParacliniqueDTO updateSignesParaclinique(Long id, SignesParacliniqueDTO signesParacliniqueDTO) {
         SignesParaclinique signesParaclinique = SignesParacliniqueDTO.convertToEntity(signesParacliniqueDTO);
         signesParaclinique.setId(id);
+        Fiche fiche=ficheRepository.findFichesBySignesParaclinique(signesParaclinique);
+        signesParaclinique.setFiche(fiche);
         return SignesParacliniqueDTO.convertToDTO(signesParacliniqueRepository.save(signesParaclinique));
     }
 

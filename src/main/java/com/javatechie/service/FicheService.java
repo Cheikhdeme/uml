@@ -53,6 +53,8 @@ public class FicheService {
     public FicheDTO updateFiche(Long id, FicheDTO ficheDTO) {
         ficheDTO.setId(id);
         Fiche fiche = convertToEntity(ficheDTO);
+        Patient patient= patientRepository.findPatientByFiches(fiche);
+        fiche.setPatient(patient);
         return convertToDTO(ficheRepository.save(fiche));
     }
 

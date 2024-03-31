@@ -26,9 +26,9 @@ public class BiologieService {
 
 
 
-    public BiologieDTO saveBiologie(BiologieDTO biologieDTO, Long id, boolean isEvolutif) {
+    public BiologieDTO saveBiologie(BiologieDTO biologieDTO, Long id, String isEvolutif) {
         Biologie biologie = BiologieDTO.convertToEntity(biologieDTO);
-        if (isEvolutif) {
+        if (isEvolutif.equals("evolutif")) {
             Optional<EvolutionApresSortie> evolutionApresSortieOptional = evolutionApresSortieRepository.findById(id);
             if (evolutionApresSortieOptional.isPresent()) {
                 EvolutionApresSortie evolutionApresSortie = evolutionApresSortieOptional.get();
@@ -66,6 +66,15 @@ public class BiologieService {
                 .orElseThrow(() -> new IllegalArgumentException("Biologie not found with id: " + id));
         Biologie updatedBiologie = BiologieDTO.convertToEntity(biologieDTO);
         updatedBiologie.setId(existingBiologie.getId()); // Assurez-vous que l'ID est défini pour que la mise à jour soit correcte
+        EvolutionApresSortie evolutionApresSortie=evolutionApresSortieRepository.findEvolutionApresSortieByBiologie(updatedBiologie);
+        SignesParaclinique signesParaclinique=signesParacliniqueRepository.findSignesParacliniqueByBiologie(updatedBiologie);
+        if (evolutionApresSortie!=null){
+            updatedBiologie.setEvolutionApresSortie(evolutionApresSortie);
+        }
+        else if (signesParaclinique!=null){
+            updatedBiologie.setSignesParaclinique(signesParaclinique);
+        }
+        else return  null;
         return BiologieDTO.convertToDTO(biologieRepository.save(updatedBiologie));
     }
 

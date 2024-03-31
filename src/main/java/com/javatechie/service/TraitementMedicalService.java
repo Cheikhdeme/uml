@@ -49,6 +49,8 @@ public class TraitementMedicalService {
     public TraitementMedicalDTO updateTraitementMedical(Long id, TraitementMedicalDTO traitementMedicalDTO) {
         TraitementMedical traitementMedical = TraitementMedicalDTO.convertToEntity(traitementMedicalDTO);
         traitementMedical.setId(id);
+        Fiche fiche=ficheRepository.findFichesByTraitementMedical(traitementMedical);
+        traitementMedical.setFiche(fiche);
         return TraitementMedicalDTO.convertToDTO(traitementMedicalRepository.save(traitementMedical));
     }
 

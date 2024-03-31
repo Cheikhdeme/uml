@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/antecedents-personnel")
+@RequestMapping("/api/antecedentPersonnel")
 public class AntecedentsPersonnelController {
 
     @Autowired

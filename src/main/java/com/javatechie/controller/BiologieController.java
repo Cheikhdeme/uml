@@ -12,14 +12,14 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/api/biologies")
+@RequestMapping("/api/biologie")
 public class BiologieController {
 
     @Autowired
     private BiologieService biologieService;
 
     @PostMapping("/add/{id}/{evolutif}")
-    public ResponseEntity<BiologieDTO> saveBiologie(@RequestBody BiologieDTO biologieDTO,@PathVariable Long id,@PathVariable boolean evolutif) {
+    public ResponseEntity<BiologieDTO> saveBiologie(@RequestBody BiologieDTO biologieDTO,@PathVariable Long id,@PathVariable String evolutif) {
         BiologieDTO savedBiologie = biologieService.saveBiologie(biologieDTO,id,evolutif);
         return new ResponseEntity<>(savedBiologie, HttpStatus.CREATED);
     }

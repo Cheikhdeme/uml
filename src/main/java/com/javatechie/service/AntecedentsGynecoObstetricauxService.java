@@ -48,6 +48,8 @@ public class AntecedentsGynecoObstetricauxService {
     public AntecedentsGynecoObstetricauxDTO updateAntecedentsGynecoObstetricaux(Long id, AntecedentsGynecoObstetricauxDTO dto) {
         AntecedentsGynecoObstetricaux antecedentsGynecoObstetricaux = AntecedentsGynecoObstetricauxDTO.convertToEntity(dto);
         antecedentsGynecoObstetricaux.setId(id);
+        AntecedentsPersonnel antecedentsPersonnel=antecedentsPersonnelRepository.findAntecedentsPersonnelByAntecedentsGynecoObstetricaux(antecedentsGynecoObstetricaux);
+        antecedentsGynecoObstetricaux.setAntecedentsPersonnel(antecedentsPersonnel);
         return AntecedentsGynecoObstetricauxDTO.convertToDTO(antecedentsGynecoObstetricauxRepository.save(antecedentsGynecoObstetricaux));
     }
 

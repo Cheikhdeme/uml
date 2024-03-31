@@ -6,6 +6,8 @@ import com.javatechie.enumeration.StenoseValvulaire;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 public class SignesParaclinique {
@@ -16,7 +18,8 @@ public class SignesParaclinique {
 
     private boolean telecoeur;
     private double indexCardiothoracique;
-    private String autreSignes;
+    @ElementCollection
+    private List<String> autreSignes;
     private boolean ECG;
     private boolean epanchementPericardique;
     private FuiteValvulaire fuiteValvulaire;

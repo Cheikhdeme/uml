@@ -50,6 +50,8 @@ public class ModaliteEvolutionHospitalisationService {
     public ModaliteEvolutionHospitalisationDTO updateModaliteEvolutionHospitalisation(Long id, ModaliteEvolutionHospitalisationDTO modaliteEvolutionHospitalisationDTO) {
         ModaliteEvolutionHospitalisation modaliteEvolutionHospitalisation = ModaliteEvolutionHospitalisationDTO.convertToEntity(modaliteEvolutionHospitalisationDTO);
         modaliteEvolutionHospitalisation.setId(id);
+        TraitementMedical traitementMedical=traitementMedicalRepository.findTraitementMedicalByModaliteEvolutionHospitalisation(modaliteEvolutionHospitalisation);
+        modaliteEvolutionHospitalisation.setTraitementMedical(traitementMedical);
         return ModaliteEvolutionHospitalisationDTO.convertToDTO(modaliteEvolutionHospitalisationRepository.save(modaliteEvolutionHospitalisation));
     }
 

@@ -17,7 +17,7 @@ public class ETTController {
     private ETTService ettService;
 
     @PostMapping("/add/{id}/{evolutif}")
-    public ResponseEntity<EttDTO> saveETT(@RequestBody EttDTO ettDTO,@PathVariable Long id,@PathVariable boolean evolutif) {
+    public ResponseEntity<EttDTO> saveETT(@RequestBody EttDTO ettDTO,@PathVariable Long id,@PathVariable String evolutif) {
         EttDTO savedETT = ettService.saveETT(ettDTO,id,evolutif);
         return new ResponseEntity<>(savedETT, HttpStatus.CREATED);
     }

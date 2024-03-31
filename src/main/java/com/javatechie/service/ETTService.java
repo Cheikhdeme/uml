@@ -24,9 +24,9 @@ public class ETTService {
     @Autowired
     private SignesParacliniqueRepository signesParacliniqueRepository;
 
-    public EttDTO saveETT(EttDTO ettDTO,Long id,boolean isEvolutif) {
+    public EttDTO saveETT(EttDTO ettDTO,Long id,String isEvolutif) {
         ETT ett = EttDTO.convertToEntity(ettDTO);
-        if (isEvolutif){
+        if (isEvolutif.equals("evolutif")){
             Optional<EvolutionApresSortie> evolutionApresSortieOptional=evolutionApresSortieRepository.findById(id);
             if (evolutionApresSortieOptional.isPresent()){
                 EvolutionApresSortie evolutionApresSortie=evolutionApresSortieOptional.get();
@@ -65,6 +65,15 @@ public class ETTService {
     public EttDTO updateETT(Long id, EttDTO ettDTO) {
         ETT ett = EttDTO.convertToEntity(ettDTO);
         ett.setId(id);
+        EvolutionApresSortie evolutionApresSortie=evolutionApresSortieRepository.findEvolutionApresSortieByEtt(ett);
+        SignesParaclinique signesParaclinique=signesParacliniqueRepository.findSignesParacliniqueByEtt(ett);
+        if (evolutionApresSortie!=null){
+            ett.setEvolutionApresSortie(evolutionApresSortie);
+        }
+        else if (signesParaclinique!=null){
+            ett.setSignesParaclinique(signesParaclinique);
+        }
+        else return null;
         return EttDTO.convertToDTO(ettRepository.save(ett));
     }
 

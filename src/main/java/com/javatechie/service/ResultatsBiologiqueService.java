@@ -49,6 +49,8 @@ public class ResultatsBiologiqueService {
     public ResultatsBiologiqueDTO updateResultatsBiologique(Long id, ResultatsBiologiqueDTO resultatsBiologiqueDTO) {
         ResultatsBiologique resultatsBiologique = ResultatsBiologiqueDTO.convertToEntity(resultatsBiologiqueDTO);
         resultatsBiologique.setId(id);
+        SignesParaclinique signesParaclinique=signesParacliniqueRepository.findSignesParacliniqueByResultatsBiologique(resultatsBiologique);
+        resultatsBiologique.setSignesParaclinique(signesParaclinique);
         return ResultatsBiologiqueDTO.convertToDTO(resultatsBiologiqueRepository.save(resultatsBiologique));
     }
 

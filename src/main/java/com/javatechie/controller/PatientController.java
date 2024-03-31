@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+
 @RequestMapping("/api/patients")
 public class PatientController {
 
@@ -43,14 +44,14 @@ public class PatientController {
 
 
     // Endpoint pour mettre à jour un patient
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<PatientDTO> updatePatient(@PathVariable Long id, @RequestBody PatientDTO patient) {
         PatientDTO updatedPatient = patientService.updatePatient(id, patient);
         return new ResponseEntity<>(updatedPatient, HttpStatus.OK);
     }
 
     // Endpoint pour supprimer un patient
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePatient(@PathVariable Long id) {
         patientService.deletePatient(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

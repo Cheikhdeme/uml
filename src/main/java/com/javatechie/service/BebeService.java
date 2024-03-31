@@ -49,6 +49,8 @@ public class BebeService {
     public BebeDTO updateBebe(Long id, BebeDTO bebeDTO) {
         Bebe bebe = BebeDTO.convertToEntity(bebeDTO);
         bebe.setId(id);
+        TraitementMedical traitementMedical=traitementMedicalRepository.findTraitementMedicalByBebe(bebe);
+        bebe.setTraitementMedical(traitementMedical);
         return BebeDTO.convertToDTO(bebeRepository.save(bebe));
     }
 

@@ -2,6 +2,8 @@ package com.javatechie.controller;
 
 import com.javatechie.dto.FicheDTO;
 import com.javatechie.entity.Fiche;
+import com.javatechie.entity.Patient;
+import com.javatechie.repository.PatientRepository;
 import com.javatechie.service.FicheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,7 @@ public class FicheController {
 
     @Autowired
     private FicheService ficheService;
+
 
     // Endpoint pour ajouter une fiche
     @PostMapping("/add/{patientId}")
@@ -44,14 +47,14 @@ public class FicheController {
     }
 
     // Endpoint pour mettre à jour une fiche
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<FicheDTO> updateFiche(@PathVariable Long id, @RequestBody FicheDTO fiche) {
         FicheDTO updatedFiche = ficheService.updateFiche(id, fiche);
         return new ResponseEntity<>(updatedFiche, HttpStatus.OK);
     }
 
     // Endpoint pour supprimer une fiche
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteFiche(@PathVariable Long id) {
         ficheService.deleteFiche(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

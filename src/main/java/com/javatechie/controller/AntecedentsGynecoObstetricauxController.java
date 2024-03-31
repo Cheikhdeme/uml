@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/antecedents-gyneco-obstetricaux")
+@RequestMapping("/api/antecedentGyneco")
 public class AntecedentsGynecoObstetricauxController {
 
     @Autowired

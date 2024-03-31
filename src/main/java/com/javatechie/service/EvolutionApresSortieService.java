@@ -49,6 +49,8 @@ public class EvolutionApresSortieService {
     public EvolutionApresSortieDTO updateEvolutionApresSortie(Long id, EvolutionApresSortieDTO evolutionApresSortieDTO) {
         EvolutionApresSortie evolutionApresSortie = EvolutionApresSortieDTO.convertToEntity(evolutionApresSortieDTO);
         evolutionApresSortie.setId(id);
+        TraitementMedical traitementMedical=traitementMedicalRepository.findTraitementMedicalByEvolutionApresSorties(evolutionApresSortie);
+        evolutionApresSortie.setTraitementMedical(traitementMedical);
         return EvolutionApresSortieDTO.convertToDTO(evolutionApresSortieRepository.save(evolutionApresSortie));
     }
 

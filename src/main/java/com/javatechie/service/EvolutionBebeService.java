@@ -48,6 +48,8 @@ public class EvolutionBebeService {
     public EvolutionBebeDTO updateEvolutionBebe(Long id, EvolutionBebeDTO evolutionBebeDTO) {
         EvolutionBebe evolutionBebe = EvolutionBebeDTO.convertToEntity(evolutionBebeDTO);
         evolutionBebe.setId(id);
+        EvolutionApresSortie evolutionApresSortie=evolutionApresSortieRepository.findEvolutionApresSortieByEvolutionBebe(evolutionBebe);
+        evolutionBebe.setEvolutionApresSortie(evolutionApresSortie);
         return EvolutionBebeDTO.convertToDTO((EvolutionBebe) evolutionBebeRepository.save(evolutionBebe));
     }
 

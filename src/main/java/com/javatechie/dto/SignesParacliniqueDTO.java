@@ -6,6 +6,8 @@ import com.javatechie.enumeration.FuiteValvulaire;
 import com.javatechie.enumeration.StenoseValvulaire;
 import lombok.Data;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -14,7 +16,7 @@ public class SignesParacliniqueDTO {
     private Long id;
     private boolean telecoeur;
     private double indexCardiothoracique;
-    private String autreSignes;
+    private List <String> autreSignes;
     private boolean ECG;
     private boolean epanchementPericardique;
     private FuiteValvulaire fuiteValvulaire;

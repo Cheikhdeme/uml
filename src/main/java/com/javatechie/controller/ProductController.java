@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api")
 public class ProductController {
 
     @Autowired
@@ -32,7 +32,7 @@ public class ProductController {
         return "Welcome this endpoint is not secure";
     }
 
-    @PostMapping("/new")
+    @PostMapping("/register")
     public String addNewUser(@RequestBody UserInfo userInfo) {
         return service.addUser(userInfo);
     }

@@ -10,4 +10,6 @@ public class SpringSecurityLatestApplication {
 		SpringApplication.run(SpringSecurityLatestApplication.class, args);
 	}
 
+
+
 }

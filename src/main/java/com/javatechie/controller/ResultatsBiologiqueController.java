@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/resultats-biologiques")
+@RequestMapping("/api/resultatBiologique")
 public class ResultatsBiologiqueController {
 
     @Autowired

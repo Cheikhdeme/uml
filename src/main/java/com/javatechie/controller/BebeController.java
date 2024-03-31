@@ -12,7 +12,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/api/bebes")
+@RequestMapping("/api/bebe")
 public class BebeController {
 
     @Autowired

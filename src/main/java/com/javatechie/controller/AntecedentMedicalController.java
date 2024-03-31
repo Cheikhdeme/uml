@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/antecedents")
+@RequestMapping("/api/antecedentMedical")
 public class AntecedentMedicalController {
 
     @Autowired
@@ -36,13 +36,13 @@ public class AntecedentMedicalController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<AntecedentMedicalDTO> updateAntecedentMedical(@PathVariable("id") Long id, @RequestBody AntecedentMedicalDTO antecedentMedicalDTO) {
         AntecedentMedicalDTO updatedAntecedentMedicalDTO = antecedentMedicalService.updateAntecedentMedical(id, antecedentMedicalDTO);
         return new ResponseEntity<>(updatedAntecedentMedicalDTO, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAntecedentMedical(@PathVariable("id") Long id) {
         antecedentMedicalService.deleteAntecedentMedical(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

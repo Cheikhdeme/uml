@@ -30,6 +30,12 @@ public class TraitementMedicalDTO {
         traitementMedical.setId(traitementMedicalDTO.getId());
         traitementMedical.setDiuretique(traitementMedicalDTO.isDiuretique());
         traitementMedical.setIEC(traitementMedicalDTO.isIEC());
+        traitementMedical.setBromocriptine(traitementMedicalDTO.isBromocriptine());
+        traitementMedical.setAnticoagulants(traitementMedicalDTO.isAnticoagulants());
+        traitementMedical.setContraception(traitementMedicalDTO.isContraception());
+        traitementMedical.setTonicardiaque(traitementMedicalDTO.isTonicardiaque());
+        traitementMedical.setBetabloquants(traitementMedicalDTO.isBetabloquants());
+        traitementMedical.setAutres(traitementMedicalDTO.getAutres());
         // Assurez-vous que les propriétés sont initialisées pour éviter les erreurs de NullPointerException
         if (traitementMedicalDTO.getEvolutionApresSorties() != null) {
             traitementMedical.setEvolutionApresSorties(traitementMedicalDTO.getEvolutionApresSorties().stream()
@@ -51,6 +57,12 @@ public class TraitementMedicalDTO {
         traitementMedicalDTO.setId(traitementMedical.getId());
         traitementMedicalDTO.setDiuretique(traitementMedical.isDiuretique());
         traitementMedicalDTO.setIEC(traitementMedical.isIEC());
+        traitementMedicalDTO.setBromocriptine(traitementMedical.isBromocriptine());
+        traitementMedicalDTO.setAnticoagulants(traitementMedical.isAnticoagulants());
+        traitementMedicalDTO.setContraception(traitementMedical.isContraception());
+        traitementMedicalDTO.setTonicardiaque(traitementMedical.isTonicardiaque());
+        traitementMedicalDTO.setBetabloquants(traitementMedical.isBetabloquants());
+        traitementMedicalDTO.setAutres(traitementMedical.getAutres());
         // Assurez-vous que les propriétés sont initialisées pour éviter les erreurs de NullPointerException
         if (traitementMedical.getEvolutionApresSorties() != null) {
             traitementMedicalDTO.setEvolutionApresSorties(traitementMedical.getEvolutionApresSorties().stream()
